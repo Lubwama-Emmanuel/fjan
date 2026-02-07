@@ -5,6 +5,7 @@ import {
   Dimensions,
   Text,
   Image,
+  ScrollView,
 } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -19,213 +20,341 @@ const windowHeight = Dimensions.get("window").height;
 export default function App() {
   return (
     <View style={styles.mainContainer}>
-      <ImageBackground
-        source={require("./assets/food_bg.png")}
-        style={styles.backgroundImage}
-        resizeMode="cover"
-      >
-        <View style={styles.headerContainer}>
-          {/* Location Conatiner */}
+      <ScrollView>
+        <ImageBackground
+          source={require("./assets/food_bg.png")}
+          style={styles.backgroundImage}
+          resizeMode="cover"
+        >
+          <View style={styles.headerContainer}>
+            {/* Location Conatiner */}
+            <View>
+              <View style={styles.locationContainer}>
+                <Text style={styles.locationText}>Your Location</Text>
+                <MaterialIcons
+                  name="keyboard-arrow-down"
+                  size={30}
+                  color="white"
+                />
+              </View>
+              <View style={styles.locationContainer}>
+                <Ionicons name="location-outline" size={24} color="white" />
+                <Text style={styles.cityText}>Kira, Kiyinda</Text>
+              </View>
+            </View>
+
+            {/* Icons Container */}
+            <View style={styles.mainIconContainer}>
+              <View style={styles.iconContainer}>
+                <Feather name="search" size={24} color="white" />
+              </View>
+              <View style={styles.iconContainer}>
+                <FontAwesome name="bell-o" size={24} color="white" />
+              </View>
+            </View>
+          </View>
+          <Text style={styles.tagline}>Provide the best food for you</Text>
+        </ImageBackground>
+
+        {/* Status Bar Component */}
+        <StatusBar style="light" />
+
+        {/* Content Container */}
+        <View style={styles.contentContainer}>
+          <View style={styles.seeContainer}>
+            <Text style={styles.findText}>Find by Category</Text>
+            <Text style={styles.seeAllText}>See All</Text>
+          </View>
+
+          {/* Category Container */}
+          <View style={styles.mainCategoryContainer}>
+            <View style={styles.categoryContainer}>
+              <Image
+                source={require("./assets/burger.png")}
+                style={styles.categoryImage}
+              />
+              <Text style={styles.categoryText}>Burger</Text>
+            </View>
+            <View style={styles.categoryContainer}>
+              <Image
+                source={require("./assets/taco.png")}
+                style={styles.categoryImage}
+              />
+              <Text style={styles.categoryText}>Taco</Text>
+            </View>
+            <View style={styles.categoryContainer}>
+              <Image
+                source={require("./assets/drink.png")}
+                style={styles.categoryImage}
+              />
+              <Text style={styles.categoryText}>Drink</Text>
+            </View>
+            <View style={styles.categoryContainer}>
+              <Image
+                source={require("./assets/pizza.png")}
+                style={styles.categoryImage}
+              />
+              <Text style={styles.categoryText}>Pizza</Text>
+            </View>
+          </View>
+
+          {/* Food Container */}
           <View>
-            <View style={styles.locationContainer}>
-              <Text style={styles.locationText}>Your Location</Text>
-              <MaterialIcons
-                name="keyboard-arrow-down"
-                size={30}
-                color="white"
-              />
-            </View>
-            <View style={styles.locationContainer}>
-              <Ionicons name="location-outline" size={24} color="white" />
-              <Text style={styles.cityText}>Kira, Kiyinda</Text>
-            </View>
-          </View>
-
-          {/* Icons Container */}
-          <View style={styles.mainIconContainer}>
-            <View style={styles.iconContainer}>
-              <Feather name="search" size={24} color="white" />
-            </View>
-            <View style={styles.iconContainer}>
-              <FontAwesome name="bell-o" size={24} color="white" />
-            </View>
-          </View>
-        </View>
-        <Text style={styles.tagline}>Provide the best food for you</Text>
-      </ImageBackground>
-
-      {/* Status Bar Component */}
-      <StatusBar style="light" />
-
-      {/* Content Container */}
-      <View style={styles.contentContainer}>
-        <View style={styles.seeContainer}>
-          <Text style={styles.findText}>Find by Category</Text>
-          <Text style={styles.seeAllText}>See All</Text>
-        </View>
-
-        {/* Category Container */}
-        <View style={styles.mainCategoryContainer}>
-          <View style={styles.categoryContainer}>
-            <Image
-              source={require("./assets/burger.png")}
-              style={styles.categoryImage}
-            />
-            <Text style={styles.categoryText}>Burger</Text>
-          </View>
-          <View style={styles.categoryContainer}>
-            <Image
-              source={require("./assets/taco.png")}
-              style={styles.categoryImage}
-            />
-            <Text style={styles.categoryText}>Taco</Text>
-          </View>
-          <View style={styles.categoryContainer}>
-            <Image
-              source={require("./assets/drink.png")}
-              style={styles.categoryImage}
-            />
-            <Text style={styles.categoryText}>Drink</Text>
-          </View>
-          <View style={styles.categoryContainer}>
-            <Image
-              source={require("./assets/pizza.png")}
-              style={styles.categoryImage}
-            />
-            <Text style={styles.categoryText}>Pizza</Text>
-          </View>
-        </View>
-
-        {/* Food Container */}
-        <View>
-          <View style={styles.foodMainContainer}>
-            {/* Food Item */}
-            <View style={styles.foodItem}>
-              <View style={styles.heartContainer}>
-                <FontAwesome name="heart-o" size={24} color="#F14141" />
-              </View>
-              <Image
-                source={require("./assets/food1.png")}
-                style={styles.foodImage}
-              />
-              <View style={styles.foodContent}>
-                <Text style={styles.foodtext}>Ordinary Burgers</Text>
-                <View>
-                  <View style={styles.foodDetails}>
-                    <View style={styles.foodRating}>
-                      <Entypo name="star" size={24} color="#FE8C00" />
-                      <Text style={styles.ratingText}>4.9</Text>
+            <View style={styles.foodMainContainer}>
+              {/* Food Item */}
+              <View style={styles.foodItem}>
+                <View style={styles.heartContainer}>
+                  <FontAwesome name="heart-o" size={24} color="#F14141" />
+                </View>
+                <Image
+                  source={require("./assets/food1.png")}
+                  style={styles.foodImage}
+                />
+                <View style={styles.foodContent}>
+                  <Text style={styles.foodtext}>Ordinary Burgers</Text>
+                  <View>
+                    <View style={styles.foodDetails}>
+                      <View style={styles.foodRating}>
+                        <Entypo name="star" size={24} color="#FE8C00" />
+                        <Text style={styles.ratingText}>4.9</Text>
+                      </View>
+                      <View style={styles.foodRating}>
+                        <Ionicons
+                          name="location-outline"
+                          size={24}
+                          color="#FE8C00"
+                        />
+                        <Text style={styles.ratingText}>900m</Text>
+                      </View>
                     </View>
-                    <View style={styles.foodRating}>
-                      <Ionicons
-                        name="location-outline"
-                        size={24}
-                        color="#FE8C00"
-                      />
-                      <Text style={styles.ratingText}>900m</Text>
-                    </View>
+
+                    <Text style={styles.foodPrice}>$ 17,230</Text>
                   </View>
+                </View>
+              </View>
+              <View style={styles.foodItem}>
+                <View style={styles.heartContainer}>
+                  <FontAwesome name="heart-o" size={24} color="#F14141" />
+                </View>
+                <Image
+                  source={require("./assets/food2.png")}
+                  style={styles.foodImage}
+                />
+                <View style={styles.foodContent}>
+                  <Text style={styles.foodtext}>Burger With Meat</Text>
+                  <View>
+                    <View style={styles.foodDetails}>
+                      <View style={styles.foodRating}>
+                        <Entypo name="star" size={24} color="#FE8C00" />
+                        <Text style={styles.ratingText}>4.2</Text>
+                      </View>
+                      <View style={styles.foodRating}>
+                        <Ionicons
+                          name="location-outline"
+                          size={24}
+                          color="#FE8C00"
+                        />
+                        <Text style={styles.ratingText}>190m</Text>
+                      </View>
+                    </View>
 
-                  <Text style={styles.foodPrice}>$ 17,230</Text>
+                    <Text style={styles.foodPrice}>$ 17,230</Text>
+                  </View>
                 </View>
               </View>
             </View>
-            <View style={styles.foodItem}>
-              <View style={styles.heartContainer}>
-                <FontAwesome name="heart-o" size={24} color="#F14141" />
-              </View>
-              <Image
-                source={require("./assets/food2.png")}
-                style={styles.foodImage}
-              />
-              <View style={styles.foodContent}>
-                <Text style={styles.foodtext}>Burger With Meat</Text>
-                <View>
-                  <View style={styles.foodDetails}>
-                    <View style={styles.foodRating}>
-                      <Entypo name="star" size={24} color="#FE8C00" />
-                      <Text style={styles.ratingText}>4.2</Text>
+            <View style={styles.foodMainContainer}>
+              {/* Food Item */}
+              <View style={styles.foodItem}>
+                <View style={styles.heartContainer}>
+                  <FontAwesome name="heart-o" size={24} color="#F14141" />
+                </View>
+                <Image
+                  source={require("./assets/food3.png")}
+                  style={styles.foodImage}
+                />
+                <View style={styles.foodContent}>
+                  <Text style={styles.foodtext}>Ordinary Burgers</Text>
+                  <View>
+                    <View style={styles.foodDetails}>
+                      <View style={styles.foodRating}>
+                        <Entypo name="star" size={24} color="#FE8C00" />
+                        <Text style={styles.ratingText}>4.9</Text>
+                      </View>
+                      <View style={styles.foodRating}>
+                        <Ionicons
+                          name="location-outline"
+                          size={24}
+                          color="#FE8C00"
+                        />
+                        <Text style={styles.ratingText}>900m</Text>
+                      </View>
                     </View>
-                    <View style={styles.foodRating}>
-                      <Ionicons
-                        name="location-outline"
-                        size={24}
-                        color="#FE8C00"
-                      />
-                      <Text style={styles.ratingText}>190m</Text>
-                    </View>
-                  </View>
 
-                  <Text style={styles.foodPrice}>$ 17,230</Text>
+                    <Text style={styles.foodPrice}>$ 17,230</Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.foodItem}>
+                <View style={styles.heartContainer}>
+                  <FontAwesome name="heart-o" size={24} color="#F14141" />
+                </View>
+                <Image
+                  source={require("./assets/food4.png")}
+                  style={styles.foodImage}
+                />
+                <View style={styles.foodContent}>
+                  <Text style={styles.foodtext}>Burger With Meat</Text>
+                  <View>
+                    <View style={styles.foodDetails}>
+                      <View style={styles.foodRating}>
+                        <Entypo name="star" size={24} color="#FE8C00" />
+                        <Text style={styles.ratingText}>4.2</Text>
+                      </View>
+                      <View style={styles.foodRating}>
+                        <Ionicons
+                          name="location-outline"
+                          size={24}
+                          color="#FE8C00"
+                        />
+                        <Text style={styles.ratingText}>190m</Text>
+                      </View>
+                    </View>
+
+                    <Text style={styles.foodPrice}>$ 17,230</Text>
+                  </View>
                 </View>
               </View>
             </View>
-          </View>
-          <View style={styles.foodMainContainer}>
-            {/* Food Item */}
-            <View style={styles.foodItem}>
-              <View style={styles.heartContainer}>
-                <FontAwesome name="heart-o" size={24} color="#F14141" />
-              </View>
-              <Image
-                source={require("./assets/food3.png")}
-                style={styles.foodImage}
-              />
-              <View style={styles.foodContent}>
-                <Text style={styles.foodtext}>Ordinary Burgers</Text>
-                <View>
-                  <View style={styles.foodDetails}>
-                    <View style={styles.foodRating}>
-                      <Entypo name="star" size={24} color="#FE8C00" />
-                      <Text style={styles.ratingText}>4.9</Text>
+            <View style={styles.foodMainContainer}>
+              {/* Food Item */}
+              <View style={styles.foodItem}>
+                <View style={styles.heartContainer}>
+                  <FontAwesome name="heart-o" size={24} color="#F14141" />
+                </View>
+                <Image
+                  source={require("./assets/food3.png")}
+                  style={styles.foodImage}
+                />
+                <View style={styles.foodContent}>
+                  <Text style={styles.foodtext}>Ordinary Burgers</Text>
+                  <View>
+                    <View style={styles.foodDetails}>
+                      <View style={styles.foodRating}>
+                        <Entypo name="star" size={24} color="#FE8C00" />
+                        <Text style={styles.ratingText}>4.9</Text>
+                      </View>
+                      <View style={styles.foodRating}>
+                        <Ionicons
+                          name="location-outline"
+                          size={24}
+                          color="#FE8C00"
+                        />
+                        <Text style={styles.ratingText}>900m</Text>
+                      </View>
                     </View>
-                    <View style={styles.foodRating}>
-                      <Ionicons
-                        name="location-outline"
-                        size={24}
-                        color="#FE8C00"
-                      />
-                      <Text style={styles.ratingText}>900m</Text>
-                    </View>
-                  </View>
 
-                  <Text style={styles.foodPrice}>$ 17,230</Text>
+                    <Text style={styles.foodPrice}>$ 17,230</Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.foodItem}>
+                <View style={styles.heartContainer}>
+                  <FontAwesome name="heart-o" size={24} color="#F14141" />
+                </View>
+                <Image
+                  source={require("./assets/food4.png")}
+                  style={styles.foodImage}
+                />
+                <View style={styles.foodContent}>
+                  <Text style={styles.foodtext}>Burger With Meat</Text>
+                  <View>
+                    <View style={styles.foodDetails}>
+                      <View style={styles.foodRating}>
+                        <Entypo name="star" size={24} color="#FE8C00" />
+                        <Text style={styles.ratingText}>4.2</Text>
+                      </View>
+                      <View style={styles.foodRating}>
+                        <Ionicons
+                          name="location-outline"
+                          size={24}
+                          color="#FE8C00"
+                        />
+                        <Text style={styles.ratingText}>190m</Text>
+                      </View>
+                    </View>
+
+                    <Text style={styles.foodPrice}>$ 17,230</Text>
+                  </View>
                 </View>
               </View>
             </View>
-            <View style={styles.foodItem}>
-              <View style={styles.heartContainer}>
-                <FontAwesome name="heart-o" size={24} color="#F14141" />
-              </View>
-              <Image
-                source={require("./assets/food4.png")}
-                style={styles.foodImage}
-              />
-              <View style={styles.foodContent}>
-                <Text style={styles.foodtext}>Burger With Meat</Text>
-                <View>
-                  <View style={styles.foodDetails}>
-                    <View style={styles.foodRating}>
-                      <Entypo name="star" size={24} color="#FE8C00" />
-                      <Text style={styles.ratingText}>4.2</Text>
+            <View style={styles.foodMainContainer}>
+              {/* Food Item */}
+              <View style={styles.foodItem}>
+                <View style={styles.heartContainer}>
+                  <FontAwesome name="heart-o" size={24} color="#F14141" />
+                </View>
+                <Image
+                  source={require("./assets/food3.png")}
+                  style={styles.foodImage}
+                />
+                <View style={styles.foodContent}>
+                  <Text style={styles.foodtext}>Ordinary Burgers</Text>
+                  <View>
+                    <View style={styles.foodDetails}>
+                      <View style={styles.foodRating}>
+                        <Entypo name="star" size={24} color="#FE8C00" />
+                        <Text style={styles.ratingText}>4.9</Text>
+                      </View>
+                      <View style={styles.foodRating}>
+                        <Ionicons
+                          name="location-outline"
+                          size={24}
+                          color="#FE8C00"
+                        />
+                        <Text style={styles.ratingText}>900m</Text>
+                      </View>
                     </View>
-                    <View style={styles.foodRating}>
-                      <Ionicons
-                        name="location-outline"
-                        size={24}
-                        color="#FE8C00"
-                      />
-                      <Text style={styles.ratingText}>190m</Text>
-                    </View>
-                  </View>
 
-                  <Text style={styles.foodPrice}>$ 17,230</Text>
+                    <Text style={styles.foodPrice}>$ 17,230</Text>
+                  </View>
+                </View>
+              </View>
+              <View style={styles.foodItem}>
+                <View style={styles.heartContainer}>
+                  <FontAwesome name="heart-o" size={24} color="#F14141" />
+                </View>
+                <Image
+                  source={require("./assets/food4.png")}
+                  style={styles.foodImage}
+                />
+                <View style={styles.foodContent}>
+                  <Text style={styles.foodtext}>Burger With Meat</Text>
+                  <View>
+                    <View style={styles.foodDetails}>
+                      <View style={styles.foodRating}>
+                        <Entypo name="star" size={24} color="#FE8C00" />
+                        <Text style={styles.ratingText}>4.2</Text>
+                      </View>
+                      <View style={styles.foodRating}>
+                        <Ionicons
+                          name="location-outline"
+                          size={24}
+                          color="#FE8C00"
+                        />
+                        <Text style={styles.ratingText}>190m</Text>
+                      </View>
+                    </View>
+
+                    <Text style={styles.foodPrice}>$ 17,230</Text>
+                  </View>
                 </View>
               </View>
             </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </View>
   );
 }
